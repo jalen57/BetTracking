@@ -1,5 +1,16 @@
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <app-wager-form></app-wager-form>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="example-container">
+  <mat-toolbar class="example-toolbar">
+    <button mat-raised-button (click)="snav.toggle()">Bet Panel</button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" style.marginTop.px=" 0">
+    <mat-sidenav #snav mode="side">
+      <app-wager-form></app-wager-form>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

@@ -5,9 +5,17 @@ import { ReactiveFormsModule } from '@angular/forms'
  * material imports
  * import {} from '@angular/material'
  */
-import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatButtonToggleModule } from '@angular/material/button-toggle'
-import { MatCardModule } from '@angular/material/card'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +34,15 @@ import { WagerFormComponent } from './wager-form/wager-form.component';
     ReactiveFormsModule,
     MatSidenavModule,
     MatCardModule,
-    MatButtonToggleModule
+    MatGridListModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

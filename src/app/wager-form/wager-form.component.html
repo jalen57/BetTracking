@@ -1,3 +1,77 @@
-<mat-card>
-  <mat-card-title>New Wager</mat-card-title>
-</mat-card>
+
+  <form [formGroup]="wagerForm">
+    <div class="form-fields">
+      <div class="form-row">
+        <div class="form-column">
+          <mat-form-field class="wager-input">
+            <mat-label>League</mat-label>
+            <mat-select  [formControl]="wagerForm.controls['league']">
+              <mat-option *ngFor="let leagueName of leagueNames" [value]="leagueName">
+                {{ leagueName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="wager-input">
+            <mat-label>Bet Type</mat-label>
+            <mat-select  [formControl]="wagerForm.controls['betType']">
+              <mat-option *ngFor="let bet of betTypes" [value]="bet">
+                {{ bet }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="wager-input">
+            <mat-label>Team</mat-label>
+            <mat-select [formControl]="wagerForm.controls['team']">
+              <mat-option *ngFor="let team of teams" [value]="team">
+                {{ team }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="wager-input">
+            <mat-label>Period</mat-label>
+            <mat-select [formControl]="wagerForm.controls['period']">
+              <mat-option *ngFor="let period of periods" [value]="period">
+                {{ period }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-column">
+          <mat-form-field class="wager-input">
+            <mat-label>Line</mat-label>
+            <input matInput type="number" [formControl]="wagerForm.controls['line']">
+          </mat-form-field>
+
+          <mat-form-field class="wager-input">
+            <mat-label>Odds</mat-label>
+            <input matInput type="number" [formControl]="wagerForm.controls['odds']">
+          </mat-form-field>
+
+          <mat-form-field class="wager-input">
+            <mat-label>Wager</mat-label>
+            <input matInput type="number" [formControl]="wagerForm.controls['amount']">
+          </mat-form-field>
+
+          <mat-checkbox [formControl]="wagerForm.controls['inProgress']" (change)="onChanges()">Game in Progress</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="wager-input">
+          <mat-label>Result</mat-label>
+          <mat-select [formControl]="wagerForm.controls['result']">
+            <mat-option *ngFor="let result of results" [value]="result">
+              {{ result }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-stroked-button type="submit" color="accent">Add Bet</button>
+      </div>
+    </div>
+  </form>
+
