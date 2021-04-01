@@ -9,6 +9,8 @@ import { Wager } from '../../types/wager'
 })
 export class ClosedBetComponent implements OnInit {
   wagers: Array<Wager>;
+  displayedColumns: Array<string> = ['league', 'betType', 'team', 'period', 'line', 'odds',
+    'amount', 'result', 'grossReturn', 'netReturn']
 
   constructor(private api: APIService) { }
 

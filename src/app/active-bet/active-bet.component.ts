@@ -10,7 +10,6 @@ import { Wager } from '../../types/wager'
 export class ActiveBetComponent implements OnInit {
   wagers: Array<Wager>;
 
-
   constructor(private api: APIService) { }
 
   async ngOnInit() {
