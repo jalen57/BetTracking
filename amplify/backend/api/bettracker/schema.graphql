@@ -1,0 +1,14 @@
+type Wager @model {
+  id: ID!
+  league: String!
+  betType: String!,
+  team: String,
+  period: String!,
+  line: Float,
+  odds: Float!,
+  amount: Float!,
+  inProgress: Boolean!,
+  result: String,
+  grossReturn: Float,
+  netReturn: Float
+}
