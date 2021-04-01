@@ -20,9 +20,11 @@ export class ClosedBetComponent implements OnInit {
 
     this.api.OnCreateWagerListener.subscribe((event: any) => {
       const newWager = event.value.data.onCreateWager;
-      if (newWager.complete) {
+      this.wagers = [newWager, ...this.wagers];
+      /* if (newWager.complete) {
         this.wagers = [newWager, ...this.wagers];
       }
+      */
     })
   }
 

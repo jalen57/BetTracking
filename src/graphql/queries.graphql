@@ -1,4 +1,39 @@
 # this is an auto generated file. This will be overwritten
+query SyncWagers(
+  $filter: ModelWagerFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncWagers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      league
+      betType
+      team
+      period
+      line
+      odds
+      amount
+      complete
+      result
+      grossReturn
+      netReturn
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query GetWager($id: ID!) {
   getWager(id: $id) {
     id
@@ -13,6 +48,9 @@ query GetWager($id: ID!) {
     result
     grossReturn
     netReturn
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -36,9 +74,13 @@ query ListWagers(
       result
       grossReturn
       netReturn
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
+    startedAt
   }
 }

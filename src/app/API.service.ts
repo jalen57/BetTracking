@@ -22,6 +22,7 @@ export type CreateWagerInput = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version?: number | null;
 };
 
 export type ModelWagerConditionInput = {
@@ -113,6 +114,9 @@ export type Wager = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version?: number;
+  _deleted?: boolean | null;
+  _lastChangedAt?: number;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -130,10 +134,12 @@ export type UpdateWagerInput = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version?: number | null;
 };
 
 export type DeleteWagerInput = {
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelWagerFilterInput = {
@@ -174,6 +180,7 @@ export type ModelWagerConnection = {
   __typename: "ModelWagerConnection";
   items?: Array<Wager | null> | null;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type CreateWagerMutation = {
@@ -190,6 +197,9 @@ export type CreateWagerMutation = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -208,6 +218,9 @@ export type UpdateWagerMutation = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -226,8 +239,37 @@ export type DeleteWagerMutation = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
+};
+
+export type SyncWagersQuery = {
+  __typename: "ModelWagerConnection";
+  items?: Array<{
+    __typename: "Wager";
+    id: string;
+    league: string;
+    betType: string;
+    team?: string | null;
+    period: string;
+    line?: number | null;
+    odds: number;
+    amount: number;
+    complete: boolean;
+    result?: string | null;
+    grossReturn?: number | null;
+    netReturn?: number | null;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetWagerQuery = {
@@ -244,6 +286,9 @@ export type GetWagerQuery = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -264,10 +309,14 @@ export type ListWagersQuery = {
     result?: string | null;
     grossReturn?: number | null;
     netReturn?: number | null;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
     createdAt: string;
     updatedAt: string;
   } | null> | null;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type OnCreateWagerSubscription = {
@@ -284,6 +333,9 @@ export type OnCreateWagerSubscription = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -302,6 +354,9 @@ export type OnUpdateWagerSubscription = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -320,6 +375,9 @@ export type OnDeleteWagerSubscription = {
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -347,6 +405,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -381,6 +442,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -415,6 +479,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -429,6 +496,57 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeleteWagerMutation>response.data.deleteWager;
+  }
+  async SyncWagers(
+    filter?: ModelWagerFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncWagersQuery> {
+    const statement = `query SyncWagers($filter: ModelWagerFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncWagers(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            league
+            betType
+            team
+            period
+            line
+            odds
+            amount
+            complete
+            result
+            grossReturn
+            netReturn
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncWagersQuery>response.data.syncWagers;
   }
   async GetWager(id: string): Promise<GetWagerQuery> {
     const statement = `query GetWager($id: ID!) {
@@ -446,6 +564,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -480,10 +601,14 @@ export class APIService {
             result
             grossReturn
             netReturn
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -520,6 +645,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -546,6 +674,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -572,6 +703,9 @@ export class APIService {
           result
           grossReturn
           netReturn
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }

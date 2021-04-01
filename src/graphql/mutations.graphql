@@ -16,6 +16,9 @@ mutation CreateWager(
     result
     grossReturn
     netReturn
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -37,6 +40,9 @@ mutation UpdateWager(
     result
     grossReturn
     netReturn
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -58,6 +64,9 @@ mutation DeleteWager(
     result
     grossReturn
     netReturn
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
