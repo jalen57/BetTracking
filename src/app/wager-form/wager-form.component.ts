@@ -11,6 +11,8 @@ import { Wager } from './wager'
 export class WagerFormComponent implements OnInit {
   public wagerForm: FormGroup;
 
+  wagers: Array<Wager>;
+
   leagueNames: Array<string> = ['MLB', 'NBA', 'NFL', 'NHL'];
   betTypes: Array<string> = ['Point Spread', 'Money Line', 'Total'];
   teams: Array<string> = ['Home', 'Away'];
@@ -19,7 +21,7 @@ export class WagerFormComponent implements OnInit {
 
   constructor(private api: APIService, private formBuilder: FormBuilder) { }
 
-  async ngOnInit(): {
+  async ngOnInit() {
     this.wagerForm = this.formBuilder.group({
       league: '',
       betType: '',
@@ -35,6 +37,16 @@ export class WagerFormComponent implements OnInit {
     });
 
     this.onChanges();
+  }
+
+  public onCreate(wager: Wager) {
+    this.api.CreateWager(wager).then(event => {
+      console.log('wager created');
+      this.wagerForm.reset();
+    })
+    .catch(e => {
+      console.log('error creating wager...', e)
+    });
   }
 
   onChanges(): void {
