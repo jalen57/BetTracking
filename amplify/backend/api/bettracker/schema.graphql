@@ -1,6 +1,6 @@
 type Wager @model {
-  id: ID!
-  league: String!
+  id: ID!,
+  league: String!,
   betType: String!,
   team: String,
   period: String!,

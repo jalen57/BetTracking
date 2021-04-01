@@ -1,0 +1,64 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateWager(
+  $input: CreateWagerInput!
+  $condition: ModelWagerConditionInput
+) {
+  createWager(input: $input, condition: $condition) {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateWager(
+  $input: UpdateWagerInput!
+  $condition: ModelWagerConditionInput
+) {
+  updateWager(input: $input, condition: $condition) {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteWager(
+  $input: DeleteWagerInput!
+  $condition: ModelWagerConditionInput
+) {
+  deleteWager(input: $input, condition: $condition) {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}

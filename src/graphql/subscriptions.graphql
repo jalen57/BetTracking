@@ -1,0 +1,55 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateWager {
+  onCreateWager {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateWager {
+  onUpdateWager {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteWager {
+  onDeleteWager {
+    id
+    league
+    betType
+    team
+    period
+    line
+    odds
+    amount
+    inProgress
+    result
+    grossReturn
+    netReturn
+    createdAt
+    updatedAt
+  }
+}
