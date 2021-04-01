@@ -18,7 +18,7 @@ export type CreateWagerInput = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -32,7 +32,7 @@ export type ModelWagerConditionInput = {
   line?: ModelFloatInput | null;
   odds?: ModelFloatInput | null;
   amount?: ModelFloatInput | null;
-  inProgress?: ModelBooleanInput | null;
+  complete?: ModelBooleanInput | null;
   result?: ModelStringInput | null;
   grossReturn?: ModelFloatInput | null;
   netReturn?: ModelFloatInput | null;
@@ -109,7 +109,7 @@ export type Wager = {
   line?: number | null;
   odds?: number;
   amount?: number;
-  inProgress?: boolean;
+  complete?: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -126,7 +126,7 @@ export type UpdateWagerInput = {
   line?: number | null;
   odds?: number | null;
   amount?: number | null;
-  inProgress?: boolean | null;
+  complete?: boolean | null;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -145,7 +145,7 @@ export type ModelWagerFilterInput = {
   line?: ModelFloatInput | null;
   odds?: ModelFloatInput | null;
   amount?: ModelFloatInput | null;
-  inProgress?: ModelBooleanInput | null;
+  complete?: ModelBooleanInput | null;
   result?: ModelStringInput | null;
   grossReturn?: ModelFloatInput | null;
   netReturn?: ModelFloatInput | null;
@@ -186,7 +186,7 @@ export type CreateWagerMutation = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -204,7 +204,7 @@ export type UpdateWagerMutation = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -222,7 +222,7 @@ export type DeleteWagerMutation = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -240,7 +240,7 @@ export type GetWagerQuery = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -260,7 +260,7 @@ export type ListWagersQuery = {
     line?: number | null;
     odds: number;
     amount: number;
-    inProgress: boolean;
+    complete: boolean;
     result?: string | null;
     grossReturn?: number | null;
     netReturn?: number | null;
@@ -280,7 +280,7 @@ export type OnCreateWagerSubscription = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -298,7 +298,7 @@ export type OnUpdateWagerSubscription = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -316,7 +316,7 @@ export type OnDeleteWagerSubscription = {
   line?: number | null;
   odds: number;
   amount: number;
-  inProgress: boolean;
+  complete: boolean;
   result?: string | null;
   grossReturn?: number | null;
   netReturn?: number | null;
@@ -343,7 +343,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -377,7 +377,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -411,7 +411,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -442,7 +442,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -476,7 +476,7 @@ export class APIService {
             line
             odds
             amount
-            inProgress
+            complete
             result
             grossReturn
             netReturn
@@ -516,7 +516,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -542,7 +542,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn
@@ -568,7 +568,7 @@ export class APIService {
           line
           odds
           amount
-          inProgress
+          complete
           result
           grossReturn
           netReturn

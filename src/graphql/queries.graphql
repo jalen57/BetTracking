@@ -9,7 +9,7 @@ query GetWager($id: ID!) {
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn
@@ -32,7 +32,7 @@ query ListWagers(
       line
       odds
       amount
-      inProgress
+      complete
       result
       grossReturn
       netReturn

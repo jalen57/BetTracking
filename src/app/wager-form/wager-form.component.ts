@@ -82,7 +82,7 @@ export class WagerFormComponent implements OnInit {
       }
     });
 
-    this.wagerForm.get('inProgress').valueChanges.subscribe(val => {
+    this.wagerForm.get('complete').valueChanges.subscribe(val => {
       if (val) {
         this.wagerForm.get('result').patchValue(null);
         this.wagerForm.get('result').disable();

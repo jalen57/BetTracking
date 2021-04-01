@@ -12,7 +12,7 @@ mutation CreateWager(
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn
@@ -33,7 +33,7 @@ mutation UpdateWager(
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn
@@ -54,7 +54,7 @@ mutation DeleteWager(
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn

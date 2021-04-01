@@ -9,7 +9,7 @@ subscription OnCreateWager {
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn
@@ -27,7 +27,7 @@ subscription OnUpdateWager {
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn
@@ -45,7 +45,7 @@ subscription OnDeleteWager {
     line
     odds
     amount
-    inProgress
+    complete
     result
     grossReturn
     netReturn

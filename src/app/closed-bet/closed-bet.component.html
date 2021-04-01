@@ -1,1 +1,6 @@
-<p>closed-bet works!</p>
+<mat-card>
+  <div *ngFor="let wager of wagers">
+    <div>{{ wager.league }}</div>
+    <div>{{ wager.betType }}</div>
+  </div>
+</mat-card>
