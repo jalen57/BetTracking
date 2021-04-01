@@ -28,7 +28,7 @@ export class WagerFormComponent implements OnInit {
       line: null,
       odds: 100,
       amount: 1,
-      inProgress: false,
+      complete: false,
       result: null,
       grossReturn: null,
       netReturn: null

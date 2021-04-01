@@ -7,7 +7,7 @@ type Wager @model {
   line: Float,
   odds: Float!,
   amount: Float!,
-  inProgress: Boolean!,
+  complete: Boolean!,
   result: String,
   grossReturn: Float,
   netReturn: Float

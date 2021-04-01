@@ -7,7 +7,7 @@ export type Wager = {
   line?: number,
   odds: number,
   amount: number,
-  inProgress: boolean,
+  complete: boolean,
   result?: string,
   grossReturn?: number,
   netReturn?: number
