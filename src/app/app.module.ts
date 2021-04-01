@@ -21,11 +21,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WagerFormComponent } from './wager-form/wager-form.component';
+import { ActiveBetComponent } from './active-bet/active-bet.component';
+import { ClosedBetComponent } from './closed-bet/closed-bet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WagerFormComponent
+    WagerFormComponent,
+    ActiveBetComponent,
+    ClosedBetComponent
   ],
   imports: [
     BrowserModule,

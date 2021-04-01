@@ -63,3 +63,12 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+/***************************************************************************************************
+ * Recreate shims for 'global' and 'process'
+ */
+ (window as any).global = window;
+ (window as any).process = {
+   env: { DEBUG: undefined },
+ };
