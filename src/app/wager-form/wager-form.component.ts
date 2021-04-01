@@ -33,7 +33,7 @@ export class WagerFormComponent implements OnInit {
       grossReturn: null,
       netReturn: null
     });
-
+    this.wagerForm.get('result').disable();
     this.onChanges();
   }
 
@@ -84,11 +84,11 @@ export class WagerFormComponent implements OnInit {
 
     this.wagerForm.get('complete').valueChanges.subscribe(val => {
       if (val) {
-        this.wagerForm.get('result').patchValue(null);
-        this.wagerForm.get('result').disable();
+        this.wagerForm.get('result').enable();
       }
       else {
-        this.wagerForm.get('result').enable();
+        this.wagerForm.get('result').patchValue(null);
+        this.wagerForm.get('result').disable();
       }
     });
   }

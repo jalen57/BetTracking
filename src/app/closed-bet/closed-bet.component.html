@@ -1,6 +1,7 @@
 <mat-card>
+  <mat-card-title>Closed Bets</mat-card-title>
   <div *ngFor="let wager of wagers">
-    <div>{{ wager.league }}</div>
-    <div>{{ wager.betType }}</div>
+    {{ wager.league }}, {{ wager.betType }}, {{ wager.period }}, {{ wager.team }}, {{ wager.betType }}, {{ wager.line }}, {{ wager.odds }}, {{ wager.amount }}, {{ wager.result }}
+    <mat-divider></mat-divider>
   </div>
 </mat-card>

@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 /*
  * Amplify Angular UI Module
  */
@@ -51,7 +52,8 @@ import { ClosedBetComponent } from './closed-bet/closed-bet.component';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    AmplifyUIAngularModule
+    AmplifyUIAngularModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,17 +16,14 @@ export class ActiveBetComponent implements OnInit {
   async ngOnInit() {
     this.api.ListWagers().then(event => {
       this.wagers = event.items.filter(wager => wager != null);
-      //this.wagers = this.wagers.filter(wager => !wager.complete);
+      this.wagers = this.wagers.filter(wager => !wager.complete);
     });
 
     this.api.OnCreateWagerListener.subscribe((event: any) => {
       const newWager = event.value.data.onCreateWager;
-      this.wagers = [newWager, ...this.wagers];
-      /*
       if (!newWager.complete) {
         this.wagers = [newWager, ...this.wagers];
       }
-      */
     })
   }
 
