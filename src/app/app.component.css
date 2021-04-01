@@ -13,3 +13,7 @@
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1 0 auto;
 }
+
+.nav-button {
+  margin: 0.2rem;
+}

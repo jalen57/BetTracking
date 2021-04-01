@@ -10,6 +10,8 @@ import { Wager } from '../../types/wager'
 export class ActiveBetComponent implements OnInit {
   wagers: Array<Wager>;
 
+  displayedColumns: Array<string> = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount']
+
   constructor(private api: APIService) { }
 
   async ngOnInit() {
