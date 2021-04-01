@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { APIService } from '../API.service';
+import { Wager } from './wager'
 
 @Component({
   selector: 'app-wager-form',
@@ -7,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms'
   styleUrls: ['./wager-form.component.css']
 })
 export class WagerFormComponent implements OnInit {
-  wagerForm: FormGroup;
+  public wagerForm: FormGroup;
 
   leagueNames: Array<string> = ['MLB', 'NBA', 'NFL', 'NHL'];
   betTypes: Array<string> = ['Point Spread', 'Money Line', 'Total'];
@@ -15,9 +17,9 @@ export class WagerFormComponent implements OnInit {
   periods: Array<string> = [];
   results: Array<string> = ['Win', 'Push', 'Loss']
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private api: APIService, private formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): {
     this.wagerForm = this.formBuilder.group({
       league: '',
       betType: '',
