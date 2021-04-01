@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIService } from '../API.service';
-import { Wager } from './wager'
+import { Wager } from '../../types/wager'
 
 @Component({
   selector: 'app-wager-form',
@@ -10,8 +10,6 @@ import { Wager } from './wager'
 })
 export class WagerFormComponent implements OnInit {
   public wagerForm: FormGroup;
-
-  wagers: Array<Wager>;
 
   leagueNames: Array<string> = ['MLB', 'NBA', 'NFL', 'NHL'];
   betTypes: Array<string> = ['Point Spread', 'Money Line', 'Total'];
