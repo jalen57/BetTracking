@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../API.service';
-import { Wager } from '../../types/wager'
+import { Wager } from '../../wager/wager'
 
 @Component({
   selector: 'app-active-bet',

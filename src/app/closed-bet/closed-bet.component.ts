@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../API.service';
-import { Wager } from '../../types/wager'
+import { Wager } from '../../wager/wager'
+import { round } from '../../util/round'
 
 @Component({
   selector: 'app-closed-bet',
@@ -27,5 +28,4 @@ export class ClosedBetComponent implements OnInit {
       }
     })
   }
-
 }

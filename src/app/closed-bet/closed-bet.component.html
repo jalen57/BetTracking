@@ -47,11 +47,11 @@
     </ng-container>
     <ng-container matColumnDef="grossReturn">
       <th mat-header-cell *matHeaderCellDef>Gross Return</th>
-      <td mat-cell *matCellDef="let wager">{{ wager.grossReturn }}</td>
+      <td mat-cell *matCellDef="let wager">{{  wager.grossReturn | number: '1.2-2' }}</td>
     </ng-container>
     <ng-container matColumnDef="netReturn">
       <th mat-header-cell *matHeaderCellDef>netReturn</th>
-      <td mat-cell *matCellDef="let wager">{{ wager.netReturn }}</td>
+      <td mat-cell *matCellDef="let wager">{{  wager.netReturn | number: '1.2-2' }}</td>
     </ng-container>
   </table>
   <mat-paginator [length]="wagers.length" [pageSizeOptions]="[5, 25, 50]"></mat-paginator>

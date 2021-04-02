@@ -12,3 +12,4 @@ export type Wager = {
   grossReturn?: number,
   netReturn?: number
 }
+

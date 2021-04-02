@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIService } from '../API.service';
-import { Wager } from '../../types/wager'
+import { Wager } from '../../wager/wager'
 
 @Component({
   selector: 'app-wager-form',
@@ -38,6 +38,7 @@ export class WagerFormComponent implements OnInit {
   }
 
   public onCreate(wager: Wager) {
+    wager = this.calculateProfit(wager);
     this.api.CreateWager(wager).then(event => {
       console.log('wager created');
       this.wagerForm.reset();
@@ -91,6 +92,29 @@ export class WagerFormComponent implements OnInit {
         this.wagerForm.get('result').disable();
       }
     });
+  }
+
+  calculateProfit(wager: Wager): Wager {
+    if (wager.result != null) {
+      if (wager.result == 'Win') {
+        if (wager.odds >= 0) {
+          wager.grossReturn = wager.amount + (wager.amount / 100) * wager.odds;
+        }
+        else {
+          wager.grossReturn = wager.amount + 100 * (wager.amount / (-1 * wager.odds))
+        }
+      }
+      else if (wager.result == 'Push') {
+        wager.grossReturn = wager.amount;
+      }
+      else if (wager.result == 'Loss') {
+        wager.grossReturn = 0;
+      }
+      wager.netReturn = wager.grossReturn - wager.amount;
+
+
+    }
+    return wager;
   }
 
 }
