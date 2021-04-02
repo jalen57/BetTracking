@@ -31,13 +31,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WagerFormComponent } from './wager-form/wager-form.component';
 import { ActiveBetComponent } from './active-bet/active-bet.component';
 import { ClosedBetComponent } from './closed-bet/closed-bet.component';
+import { SummaryStatisticsComponent } from './summary-statistics/summary-statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WagerFormComponent,
     ActiveBetComponent,
-    ClosedBetComponent
+    ClosedBetComponent,
+    SummaryStatisticsComponent
   ],
   imports: [
     BrowserModule,

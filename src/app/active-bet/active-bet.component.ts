@@ -33,4 +33,10 @@ export class ActiveBetComponent implements OnInit {
     })
   }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.wagerDataSource.paginator = this.paginator;
+  }
+
 }
