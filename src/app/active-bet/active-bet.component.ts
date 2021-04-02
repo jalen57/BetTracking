@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { APIService } from '../API.service';
 import { Wager } from '../../wager/wager'
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator'
 
 @Component({
   selector: 'app-active-bet',
@@ -9,6 +11,7 @@ import { Wager } from '../../wager/wager'
 })
 export class ActiveBetComponent implements OnInit {
   wagers: Array<Wager>;
+  wagerDataSource: MatTableDataSource<Wager>;
 
   displayedColumns: Array<string> = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount']
 
@@ -18,12 +21,14 @@ export class ActiveBetComponent implements OnInit {
     this.api.ListWagers().then(event => {
       this.wagers = event.items.filter(wager => wager != null);
       this.wagers = this.wagers.filter(wager => !wager.complete);
+      this.wagerDataSource = new MatTableDataSource<Wager>(this.wagers);
     });
 
     this.api.OnCreateWagerListener.subscribe((event: any) => {
       const newWager = event.value.data.onCreateWager;
       if (!newWager.complete) {
         this.wagers = [newWager, ...this.wagers];
+        this.wagerDataSource = new MatTableDataSource<Wager>(this.wagers);
       }
     })
   }
