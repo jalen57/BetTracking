@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { APIService } from '../API.service';
-import { Wager } from '../../wager/wager'
+import { Wager } from '../../wager/wager';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator'
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-closed-bet',
