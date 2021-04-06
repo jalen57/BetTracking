@@ -33,6 +33,8 @@ import { ActiveBetComponent } from './active-bet/active-bet.component';
 import { ClosedBetComponent } from './closed-bet/closed-bet.component';
 import { SummaryStatisticsComponent } from './summary-statistics/summary-statistics.component';
 
+import { OudsTableModule } from './templates/ouds-table/ouds-table.module'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,7 @@ import { SummaryStatisticsComponent } from './summary-statistics/summary-statist
     MatDividerModule,
     MatPaginatorModule,
     MatTableModule,
+    OudsTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
