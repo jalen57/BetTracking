@@ -1,27 +1,7 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-
-/////////////////////////////////////////////////////////////////////
-export interface T {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: T[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-///////////////////////////////////////////////////////////////////////
+import { Component, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { TableBuilder } from './table-builder'
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort'
 
 @Component({
   selector: 'ouds-table',
@@ -29,7 +9,15 @@ const ELEMENT_DATA: T[] = [
   styleUrls: ['./ouds-table.component.css']
 })
 export class OudsTableComponent<T> {
-  displayedColumns: Array<string> = ['name',];
-  displayNames: {[key: string] : string;} = {'name': 'Name'};
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @Input() tableBuilder: TableBuilder;
+
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    if (this.tableBuilder.hasPaginator) {
+      this.tableBuilder.dataSource.paginator = this.paginator;
+      this.tableBuilder.dataSource.sort = this.sort;
+    }
+  }
 }

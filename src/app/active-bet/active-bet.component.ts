@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { APIService } from '../API.service';
 import { Wager } from '../../wager/wager';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { TableBuilder } from '../templates/ouds-table/table-builder'
 
 @Component({
   selector: 'app-active-bet',
@@ -10,33 +9,39 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./active-bet.component.css']
 })
 export class ActiveBetComponent implements OnInit {
-  wagers: Array<Wager>;
-  wagerDataSource: MatTableDataSource<Wager>;
+  tableBuilder: TableBuilder;
 
-  displayedColumns: Array<string> = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount']
+  ///////////////////////////////////////////////////////////////////////
+  constructor(private api: APIService) {
+    var displayedColumns = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount'];
+    var displayNames = ['League', 'Bet Type', 'Team', 'Period', 'Line', 'Odds', 'Amount']
+    var hasPaginator = true;
+    var paginatorOptions = [5, 10, 25];
 
-  constructor(private api: APIService) { }
+    this.tableBuilder = new TableBuilder(
+      displayedColumns=displayedColumns,
+      displayNames=displayNames,
+      hasPaginator=hasPaginator,
+      paginatorOptions=paginatorOptions
+    )
+  }
 
   async ngOnInit() {
     this.api.ListWagers().then(event => {
-      this.wagers = event.items.filter(wager => wager != null);
-      this.wagers = this.wagers.filter(wager => !wager.complete);
-      this.wagerDataSource = new MatTableDataSource<Wager>(this.wagers);
+      var wagers = this.wagerFilter(event.items);
+      this.tableBuilder.updateDataSource(wagers);
     });
 
     this.api.OnCreateWagerListener.subscribe((event: any) => {
       const newWager = event.value.data.onCreateWager;
       if (!newWager.complete) {
-        this.wagers = [newWager, ...this.wagers];
-        this.wagerDataSource = new MatTableDataSource<Wager>(this.wagers);
       }
     })
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.wagerDataSource.paginator = this.paginator;
+  wagerFilter(wagers: Array<Wager>): Array<Wager> {
+    return wagers
+    .filter(wager => wager != null)
+    .filter(wager => !wager.complete);
   }
-
 }

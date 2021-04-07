@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator'
-import { MatTableDataSource, MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table'
 
 /*
  * Amplify Angular UI Module
