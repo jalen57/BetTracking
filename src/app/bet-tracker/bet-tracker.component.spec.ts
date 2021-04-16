@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActiveBetComponent } from './active-bet.component';
+import { BetTrackerComponent } from './bet-tracker.component';
 
-describe('ActiveBetComponent', () => {
-  let component: ActiveBetComponent;
-  let fixture: ComponentFixture<ActiveBetComponent>;
+describe('BetTrackerComponent', () => {
+  let component: BetTrackerComponent;
+  let fixture: ComponentFixture<BetTrackerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActiveBetComponent ]
+      declarations: [ BetTrackerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActiveBetComponent);
+    fixture = TestBed.createComponent(BetTrackerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

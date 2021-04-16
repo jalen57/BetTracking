@@ -1,10 +1,16 @@
-<table mat-table [dataSource]="tableBuilder.dataSource" matSort>
+<table mat-table [dataSource]="tableBuilder.dataSource" matSort class="ouds-table">
   <ng-container *ngFor="let columnName of tableBuilder.displayedColumns" matColumnDef="{{ columnName }}">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ tableBuilder.displayNameLookup[columnName] }} </th>
-    <td mat-cell *matCellDef="let row"> {{ row[columnName] }} </td>
+
+    <div *ngIf="tableBuilder.roundColumnLookup[columnName]; else notRound">
+      <td mat-cell *matCellDef="let row"> {{ row[columnName] | number: '1.2-2' }} </td>
+    </div>
+    <ng-template #notRound>
+      <td mat-cell *matCellDef="let row"> {{ row[columnName] }} </td>
+    </ng-template>
+
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="tableBuilder.displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: tableBuilder.displayedColumns;"></tr>
 </table>
-<mat-paginator *ngIf="tableBuilder.hasPaginator" [pageSizeOptions]="tableBuilder.pageSizeOptions" showFirstLastButtons></mat-paginator>

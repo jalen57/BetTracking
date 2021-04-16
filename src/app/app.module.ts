@@ -29,19 +29,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WagerFormComponent } from './wager-form/wager-form.component';
-import { ActiveBetComponent } from './active-bet/active-bet.component';
-import { ClosedBetComponent } from './closed-bet/closed-bet.component';
 import { SummaryStatisticsComponent } from './summary-statistics/summary-statistics.component';
 
-import { OudsTableModule } from './templates/ouds-table/ouds-table.module'
+import { BasicTableModule } from './templates/basic-table/basic-table.module';
+import { BetTrackerComponent } from './bet-tracker/bet-tracker.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     WagerFormComponent,
-    ActiveBetComponent,
-    ClosedBetComponent,
-    SummaryStatisticsComponent
+    SummaryStatisticsComponent,
+    BetTrackerComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +61,7 @@ import { OudsTableModule } from './templates/ouds-table/ouds-table.module'
     MatDividerModule,
     MatPaginatorModule,
     MatTableModule,
-    OudsTableModule
+    BasicTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
