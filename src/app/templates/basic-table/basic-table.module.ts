@@ -4,14 +4,14 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSortModule } from '@angular/material/sort'
 
-import { OudsTableComponent } from './ouds-table.component'
+import { BasicTableComponent } from './basic-table.component'
 
 @NgModule({
   declarations: [
-    OudsTableComponent,
+    BasicTableComponent,
   ],
   exports: [
-    OudsTableComponent,
+    BasicTableComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +20,6 @@ import { OudsTableComponent } from './ouds-table.component'
     MatSortModule
   ],
 })
-export class OudsTableModule {
+export class BasicTableModule {
 
 }

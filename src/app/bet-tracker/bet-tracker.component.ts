@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { APIService } from '../API.service';
 import { Wager } from '../../wager/wager';
-import { TableBuilder } from '../templates/ouds-table/table-builder';
+import { TableBuilder } from '../templates/basic-table/table-builder';
 
 @Component({
   selector: 'app-bet-tracker',
@@ -18,11 +18,10 @@ export class BetTrackerComponent implements OnInit, AfterViewInit {
     this.createClosedBetsBuilder();
   }
 
+  // try not to use this to set up paginators etc.
   async ngOnInit() {
     this.api.ListWagers().then(event => {
       var wagers = event.items.filter(wager => wager != null);
-
-      console.log(wagers)
 
       this.activeBetsTableBuilder.updateDataSource(this.activeBetFilter(wagers));
       this.closedBetsTableBuilder.updateDataSource(this.closedBetFilter(wagers));
@@ -34,8 +33,8 @@ export class BetTrackerComponent implements OnInit, AfterViewInit {
   }
 
   createActiveBetsBuilder() {
-    var displayedColumns = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount'];
-    var displayNames = ['League', 'Bet Type', 'Team', 'Period', 'Line', 'Odds', 'Amount'];
+    var displayedColumns = ['createdAt', 'league', 'betType', 'team', 'period', 'line', 'odds', 'amount'];
+    var displayNames = ['Created', 'League', 'Bet Type', 'Team', 'Period', 'Line', 'Odds', 'Amount'];
     var roundedColumns = ['amount'];
 
     this.activeBetsTableBuilder = new TableBuilder(
@@ -46,8 +45,8 @@ export class BetTrackerComponent implements OnInit, AfterViewInit {
   }
 
   createClosedBetsBuilder() {
-    var displayedColumns = ['league', 'betType', 'team', 'period', 'line', 'odds', 'amount', 'result', 'grossReturn', 'netReturn'];
-    var displayNames = ['League', 'Bet Type', 'Team', 'Period', 'Line', 'Odds', 'Amount', 'Result', 'Gross Return', 'Net Return'];
+    var displayedColumns = ['createdAt', 'league', 'betType', 'team', 'period', 'line', 'odds', 'amount', 'result', 'grossReturn', 'netReturn'];
+    var displayNames = ['Created', 'League', 'Bet Type', 'Team', 'Period', 'Line', 'Odds', 'Amount', 'Result', 'Gross Return', 'Net Return'];
     var roundedColumns = ['amount', 'grossReturn', 'netReturn'];
 
     this.closedBetsTableBuilder = new TableBuilder(
